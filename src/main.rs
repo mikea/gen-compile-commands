@@ -55,6 +55,13 @@ fn main() {
 
     let mut entries = vec![];
     for dir in args.src_dir {
+        assert!(
+            dir.strip_prefix(&args.root).is_ok(),
+            "'--root {}' is not a prefix of '--src_dir {}'",
+            args.root.to_string_lossy(),
+            dir.to_string_lossy(),
+        );
+
         for entry in WalkDir::new(dir).into_iter().filter_entry(|e| {
             e.file_type().is_dir()
                 || args.ext.contains(
