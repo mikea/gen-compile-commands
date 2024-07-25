@@ -1,12 +1,12 @@
 # gen-compile-commands
 
-Simple utility to generate `compile-commands.json` based on `compile-flags.txt`.
+Simple utility to generate `compile_commands.json` based on `compile_flags.txt`.
 
-Without `compile-commands.json` clangd can't enumerate project files.
+Without `compile_commands.json` clangd can't enumerate project files.
 While include/symbol resolution works, find references and other features
 that require full project scanning do not work.
 
-`gen-compile-commands` uses single `compile-flags.txt` file as a template
+`gen-compile-commands` uses single `compile_flags.txt` file as a template
 for all source files discovered in `--src-dir`.
 
 ## Installation
