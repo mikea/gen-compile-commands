@@ -58,7 +58,7 @@ fn main() {
         .collect();
 
     // first argument needs to be the compiler
-    flags.push(args.compiler.clone());
+    flags.insert(0, args.compiler.clone());
 
     let mut entries = vec![];
     for dir in args.src_dir {
