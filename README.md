@@ -24,5 +24,6 @@ Options:
       --out <OUT>                      Path to the resulting `compile_commands.json`
       --src-dir <SRC_DIR>              Directory to scan for source files
       --ext <EXT>                      Source file extensions to include in `compile_commands.json` [default: c++ cc]
+      --compiler <COMPILER>            Path to the compiler [default: /usr/bin/clang++]
   -h, --help                           Print help
 ```
