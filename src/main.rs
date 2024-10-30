@@ -30,6 +30,10 @@ struct Args {
     /// Source file extensions to include in `compile_commands.json`.
     #[arg(long, default_values_t=["c++".to_string(), "cc".to_string()])]
     ext: Vec<String>,
+
+    /// Path to the compiler.
+    #[arg(long, default_value="/usr/bin/clang++")]
+    compiler: String,
 }
 
 fn main() {
@@ -42,7 +46,7 @@ fn main() {
         )
     });
 
-    let flags: Vec<String> = flags
+    let mut flags: Vec<String> = flags
         .split('\n')
         .filter_map(|l| {
             if l.is_empty() {
@@ -52,6 +56,9 @@ fn main() {
             }
         })
         .collect();
+
+    // first argument needs to be the compiler
+    flags.push(args.compiler.clone());
 
     let mut entries = vec![];
     for dir in args.src_dir {
